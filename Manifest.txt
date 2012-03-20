@@ -1,0 +1,7 @@
+.autotest
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+lib/minitest/unordered.rb
+test/test_minitest_unordered.rb
