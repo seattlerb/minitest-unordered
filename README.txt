@@ -5,19 +5,59 @@ rdoc :: http://docs.seattlerb.org/minitest-unordered
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Adds a new assertion to minitest for checking the contents of a collection,
+ignoring element order.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* The actual and expected collections must be Enumerable.
+* Uses Hash#== for determining collection equivalence; as such, element
+  equality does not behave the same as with +assert_equal+.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+  assert_equal_unordered %w[a a b c], %w[a b c a] # pass
+  assert_equal_unordered %w[a b b c], %w[a a b c] # fail
+
+  [1, 2, 3].must_equal_unordered [1, 2, 3] # pass
+  [1, 2, 3].must_equal_unordered [1, 2, 2] # fail
+
+=== EXAMPLE:
+
+  require "minitest/autorun"
+  require "minitest/unordered"
+
+  class ExampleTest < MiniTest::Unit::TestCase
+    EXPECTED_DEPS = [
+      ["hoe",  "~> 2.13.1"],
+      ["rdoc", "= 3.9"],
+      ["rdoc", "= 3.8"],
+      ["hoe",  "~> 2.13.3"],
+      ["hoe",  "~> 2.13.2"],
+      ["hoe",  "~> 2.13.0"],
+      ["rdoc", "= 3.12"]
+    ]
+
+    def setup
+      @actual_deps = [
+        ["rdoc", "= 3.9"],
+        ["hoe",  "~> 2.13.2"],
+        ["hoe",  "~> 2.13.3"],
+        ["rdoc", "= 3.8"],
+        ["hoe",  "~> 2.13.1"],
+        ["hoe",  "~> 2.13.0"],
+        ["rdoc", "= 3.12"]
+      ]
+    end
+
+    def test_expected_deps
+      assert_equal_unordered @actual_deps, EXPECTED_DEPS
+    end
+  end
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* minitest
 
 == INSTALL:
 
