@@ -19,7 +19,7 @@ ignoring element order.
   assert_equal_unordered %w[a a b c], %w[a b c a] # pass
   assert_equal_unordered %w[a b b c], %w[a a b c] # fail
 
-  [1, 2, 3].must_equal_unordered [1, 2, 3] # pass
+  [1, 2, 3].must_equal_unordered [3, 1, 2] # pass
   [1, 2, 3].must_equal_unordered [1, 2, 2] # fail
 
 === EXAMPLE:
