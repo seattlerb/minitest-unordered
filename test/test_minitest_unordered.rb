@@ -1,18 +1,18 @@
 require "minitest/autorun"
 require "minitest/unordered"
 
-class TestMinitestUnordered < MiniTest::Unit::TestCase
+class TestMinitestUnordered < Minitest::Test
   def setup
     super
 
-    MiniTest::Unit::TestCase.reset
+    Minitest::Test.reset
 
-    @tc = MiniTest::Unit::TestCase.new 'fake tc'
+    @tc = Minitest::Test.new 'fake tc'
     @assertion_count = 1
   end
 
   def teardown
-    assert_equal @assertion_count, @tc._assertions
+    assert_equal @assertion_count, @tc.assertions
   end
 
   def test_assert_equal_unordered_when_comparable_elements
@@ -97,6 +97,6 @@ describe MiniTest::Spec::Unordered do
     exp = "msg.\nExpected [1, 2] to be equivalent to [1, 2, 3]."
     assert_equal exp, e.message
 
-    self._assertions.must_equal 14
+    self.assertions.must_equal 14
   end
 end

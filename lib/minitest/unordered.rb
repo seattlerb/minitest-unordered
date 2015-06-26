@@ -1,7 +1,7 @@
 require "minitest/unit"
 require "minitest/spec"
 
-module MiniTest::Unit::Unordered
+module Minitest::Unordered
   VERSION = "1.0.1"
 
   ##
@@ -32,11 +32,11 @@ module MiniTest::Unit::Unordered
   end
 end
 
-class MiniTest::Unit::TestCase
-  include MiniTest::Unit::Unordered
+class Minitest::Test
+  include Minitest::Unordered
 end
 
-module MiniTest::Spec::Unordered
+module Minitest::Spec::Unordered
   ##
   # See MiniTest::Assertions#assert_equal_unordered
   #
@@ -48,5 +48,5 @@ module MiniTest::Spec::Unordered
 end
 
 class Object # :nodoc:
-  include MiniTest::Spec::Unordered
+  include Minitest::Spec::Unordered
 end
