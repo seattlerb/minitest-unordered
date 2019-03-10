@@ -82,21 +82,21 @@ end
 
 describe MiniTest::Spec::Unordered do
   it "needs to be sensible about must_equal_unordered order" do
-    [1, 2, 3].must_equal_unordered([1, 2, 3]).must_equal true
+    _(_([1, 2, 3]).must_equal_unordered([1, 2, 3])).must_equal true
 
     e = assert_raises MiniTest::Assertion do
-      [1, 2].must_equal_unordered [1, 2, 3]
+      _([1, 2]).must_equal_unordered [1, 2, 3]
     end
 
     assert_equal "Expected [1, 2] to be equivalent to [1, 2, 3].", e.message
 
     e = assert_raises MiniTest::Assertion do
-      [1, 2].must_equal_unordered [1, 2, 3], "msg"
+      _([1, 2]).must_equal_unordered [1, 2, 3], "msg"
     end
 
     exp = "msg.\nExpected [1, 2] to be equivalent to [1, 2, 3]."
     assert_equal exp, e.message
 
-    self.assertions.must_equal 14
+    _(self.assertions).must_equal 14
   end
 end
