@@ -48,7 +48,7 @@ class TestMinitestUnordered < Minitest::Test
   def test_assert_equal_unordered_triggered_more
     @assertion_count += 3
 
-    e = @tc.assert_raises MiniTest::Assertion do
+    e = @tc.assert_raises Minitest::Assertion do
       @tc.assert_equal_unordered [true, true], [true]
     end
 
@@ -59,7 +59,7 @@ class TestMinitestUnordered < Minitest::Test
   def test_assert_equal_unordered_triggered_less
     @assertion_count += 3
 
-    e = @tc.assert_raises MiniTest::Assertion do
+    e = @tc.assert_raises Minitest::Assertion do
       @tc.assert_equal_unordered [true], [true, true]
     end
 
@@ -70,7 +70,7 @@ class TestMinitestUnordered < Minitest::Test
   def test_assert_equal_unordered_triggered_different
     @assertion_count += 3
 
-    e = @tc.assert_raises MiniTest::Assertion do
+    e = @tc.assert_raises Minitest::Assertion do
       @tc.assert_equal_unordered [true, false, true], [false, false, true]
     end
 
@@ -80,17 +80,17 @@ class TestMinitestUnordered < Minitest::Test
   end
 end
 
-describe MiniTest::Spec::Unordered do
+describe Minitest::Spec::Unordered do
   it "needs to be sensible about must_equal_unordered order" do
     _(_([1, 2, 3]).must_equal_unordered([1, 2, 3])).must_equal true
 
-    e = assert_raises MiniTest::Assertion do
+    e = assert_raises Minitest::Assertion do
       _([1, 2]).must_equal_unordered [1, 2, 3]
     end
 
     assert_equal "Expected [1, 2] to be equivalent to [1, 2, 3].", e.message
 
-    e = assert_raises MiniTest::Assertion do
+    e = assert_raises Minitest::Assertion do
       _([1, 2]).must_equal_unordered [1, 2, 3], "msg"
     end
 

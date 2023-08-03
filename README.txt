@@ -27,7 +27,7 @@ ignoring element order.
   require "minitest/autorun"
   require "minitest/unordered"
 
-  class ExampleTest < MiniTest::Unit::TestCase
+  class ExampleTest < Minitest::Test
     EXPECTED_DEPS = [
       ["hoe",  "~> 2.13.1"],
       ["rdoc", "= 3.9"],

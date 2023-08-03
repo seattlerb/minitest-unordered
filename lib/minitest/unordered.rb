@@ -38,7 +38,7 @@ end
 
 module Minitest::Spec::Unordered
   ##
-  # See MiniTest::Assertions#assert_equal_unordered
+  # See Minitest::Assertions#assert_equal_unordered
   #
   #    collection.must_equal_unordered other
   #
