@@ -2,7 +2,7 @@ require "minitest/test"
 require "minitest/spec"
 
 module Minitest::Unordered
-  VERSION = "1.0.2"
+  VERSION = "1.0.3"
 
   ##
   # Fails unless +a+ contains the same contents as +b+, regardless
